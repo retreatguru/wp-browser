@@ -118,6 +118,8 @@ if(empty($skipWordPressInstall)){
 
         // Add custom constants as defined in the configuration
         $configConstants = $installationConfiguration->get('definedConstants', []);
+        codecept_debug("Setting constants...\n\t- " . implode("\n\t- ", $configConstants));
+        
         foreach ($configConstants as $configConstant) {
             if (defined($configConstant)) {
                 $environment['constants'][$configConstant] = constant($configConstant);
